@@ -3,7 +3,7 @@ var loadPage = {
     url_prefix: "https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/",
     url_suffix: "?raw=true",
     emotes: {
-        gif: ["catjam", "slam"],
+        gif: ["catjam", "slam", "fbk_shake"],
         png: ["fr", "frcoal", "kekw", "uhh", "wtf_kanye", "woecry"]
     },
     content: "",
