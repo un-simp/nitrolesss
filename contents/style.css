@@ -66,6 +66,7 @@ body, html {
     padding: 15px;
     margin: 10px;
     border-radius: 10px;
+    box-shadow: 0 10px 10px var(--shadow-color);
 }
 
 .emoteImage {
@@ -91,4 +92,14 @@ body, html {
 
 .footer a {
     text-decoration: none;
+}
+
+@media only screen and (max-width: 750px) {
+    #logo {
+        font-size: 50px!important;
+    }
+    .inputTextField {
+        width: 90%!important;
+        font-size: 15px!important;
+    }
 }
