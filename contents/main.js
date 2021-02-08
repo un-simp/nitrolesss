@@ -4,7 +4,7 @@ var loadPage = {
     url_suffix: "?raw=true",
     emotes: {
         gif: ["catjam", "slam", "fbk_shake"],
-        png: ["fr", "frcoal", "kekw", "uhh", "wtf_kanye", "woecry", "vibeok", "where", "monkaW", "thonk"]
+        png: ["fr", "frcoal", "kekw", "uhh", "wtf_kanye", "woecry", "vibeok", "where", "monkaW", "thonk", "completelydistraught", "troll", "yeshoney", "trol"]
     },
     content: "",
     insertData: function(emoteName, ext) {
