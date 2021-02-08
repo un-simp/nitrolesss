@@ -16,14 +16,15 @@ var loadPage = {
         img.src = this.url_prefix + emoteName + ext + this.url_suffix;
         img.id = emoteName + "Img";
         img.className = "emoteImage";
+        img.setAttribute("name", emoteName + ext);
         img.addEventListener("click", async event => {
             if(!navigator.clipboard) {
                 alert("Browser doesn't support clipboard")
             } else {
                 navigator.clipboard.writeText(event.target.getAttribute("src")).then(function() {
-                    alert("copied " + event.target.id);
+                    alert("Successfully copied -> " + event.target.name);
                 }, function(e) {
-                    alert("not copied " + event.target.id);
+                    alert("Couldn't copy " + event.target.name);
                 });
             }
         });
