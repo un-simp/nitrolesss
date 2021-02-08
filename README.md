@@ -12,7 +12,7 @@
 <img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/uhh.png?raw=true" width="50" height="50">
   uhh
 
-<img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/woecry.png?raw=true" width="50" height="50">
+<img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/woecry.png?raw=true" width="50" height="100">
   woecry
 
 <img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/wtf_kanye.png?raw=true" width="50" height="50">
