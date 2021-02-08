@@ -17,7 +17,7 @@
 <img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/woecry.png?raw=true" width="50" height="25">
 [woecry](https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/woecry.png?raw=true)
 
-<img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/wtf_kanye.png?raw=true" width="50" height="50">
+<img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/wtf_kanye.png?raw=true" width="46" height="50">
 [wtf_kanye](https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/wtf_kanye.png?raw=true)
 
 ***
