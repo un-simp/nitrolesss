@@ -18,12 +18,12 @@ var loadPage = {
         img.className = "emoteImage";
         img.addEventListener("click", async event => {
             if(!navigator.clipboard) {
-                console.log("Browser doesn't support clipboard")
+                alert("Browser doesn't support clipboard")
             } else {
-                navigator.clipboard.writeText(event.target.getAttribute("src")).then(function(e) {
-                    console.log("copied " + e);
+                navigator.clipboard.writeText(event.target.getAttribute("src")).then(function() {
+                    alert("copied " + event.target.id);
                 }, function(e) {
-                    console.log("not copied " + e);
+                    alert("not copied " + event.target.id);
                 });
             }
         });
