@@ -1,5 +1,4 @@
-# nitroless
-custom emojis on Discord without nitro.
+# nitroless  -  custom emojis on Discord without nitro.
 
 <img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/catjam.gif?raw=true" width="50" height="50">
   catjam
