@@ -4,7 +4,7 @@ var loadPage = {
     url_suffix: "?raw=true",
     emotes: {
         gif: ["catjam", "slam"],
-        png: ["fr", "frcoal", "kekw", "uhh", "woecry", "wtf_kanye"]
+        png: ["fr", "frcoal", "kekw", "uhh", "wtf_kanye", "woecry"]
     },
     content: "",
     insertData: function(emoteName, ext) {
@@ -15,6 +15,18 @@ var loadPage = {
         let img = document.createElement("img");
         img.src = this.url_prefix + emoteName + ext + this.url_suffix;
         img.id = emoteName + "Img";
+        img.className = "emoteImage";
+        img.addEventListener("click", async event => {
+            if(!navigator.clipboard) {
+                console.log("Browser doesn't support clipboard")
+            } else {
+                navigator.clipboard.writeText(event.target.getAttribute("src")).then(function(e) {
+                    console.log("copied " + e);
+                }, function(e) {
+                    console.log("not copied " + e);
+                });
+            }
+        });
 
         div.appendChild(img);
 
