@@ -1,7 +1,7 @@
 # nitroless
 ### custom emojis on Discord without nitro.
+#### Using the emojis with text next to it will make it not act like a regular emoji.
 On mobile, hold on the name of the emoji and copy the link.
-
 On desktop, right click on the name of the emoji and copy the link.
 
 <img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/catjam.gif?raw=true" width="50" height="50">
