@@ -20,5 +20,5 @@
 <img src="https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/wtf_kanye.png?raw=true" width="50" height="50">
 [wtf_kanye](https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/wtf_kanye.png?raw=true)
 
-##
+***
 made by Alpha_Stream >> [Twitter](https://twitter.com/Kutarin_)
