@@ -69,8 +69,18 @@ body, html {
     justify-content: center;
     padding: 15px;
     margin: 10px;
+    margin-bottom: 30px;
     border-radius: 10px;
     box-shadow: 0 10px 10px var(--shadow-color);
+}
+
+.emoteContainer .emoteTitle {
+    position: absolute;
+    margin-top: 65px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 100;
+    text-shadow: 0 0 10px var(--primary-dark-color);
 }
 
 .emoteImage {

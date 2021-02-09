@@ -15,13 +15,13 @@ var loadPage = {
         let imgTitle = document.createElement("div");
         imgTitle.id = emoteName + "Title";
         imgTitle.className = "emoteTitle";
-        imgTitle.innerHTML = emoteName + ext;
+        imgTitle.innerHTML = emoteName;
 
         let img = document.createElement("img");
         img.src = this.url_prefix + emoteName + ext + this.url_suffix;
         img.id = emoteName + "Img";
         img.className = "emoteImage";
-        img.setAttribute("name", emoteName + ext);
+        img.setAttribute("name", emoteName);
         img.addEventListener("click", async event => {
             if(!navigator.clipboard) {
                 alert("Browser doesn't support clipboard")
