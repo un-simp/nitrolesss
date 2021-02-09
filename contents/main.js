@@ -41,7 +41,7 @@ var loadPage = {
                 });
             }
         })
-        this.searchBar.addEventListener("keyup", (e) => {
+        this.searchBar.addEventListener("keyup input", (e) => {
             const searchString = e.target.value.toLowerCase();
             const filteredEmotes = loadPage.emotes.filter((emote) => {
                 return (emote.name.toLowerCase().includes(searchString));
