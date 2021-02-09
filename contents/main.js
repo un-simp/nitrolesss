@@ -6,7 +6,7 @@ var loadPage = {
     content: "",
     loadEmotes: async function(){
         try {
-            const res = await fetch('emotes.json');
+            const res = await fetch('contents/emotes.json');
             this.emotes = await res.json;
             this.displayEmotes(this.emotes);
         } catch(err) {
