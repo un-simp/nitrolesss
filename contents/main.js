@@ -11,6 +11,11 @@ var loadPage = {
         let div = document.createElement("div");
         div.id = emoteName;
         div.className = "emoteContainer";
+        
+        let imgTitle = document.createElement("div");
+        imgTitle.id = emoteName + "Title";
+        imgTitle.className = "emoteTitle";
+        imgTitle.innerHTML = emoteName + ext;
 
         let img = document.createElement("img");
         img.src = this.url_prefix + emoteName + ext + this.url_suffix;
@@ -30,6 +35,7 @@ var loadPage = {
         });
 
         div.appendChild(img);
+        div.appendChild(imgTitle);
 
         return div;
     },
