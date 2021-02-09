@@ -6,16 +6,16 @@ var loadPage = {
     content: "",
     loadEmotes: async function(){
         try {
-            const res = await fetch('contents/emotes.json');
+            const res = await fetch('https://raw.githubusercontent.com/TheAlphaStream/nitroless/main/contents/emotes.json?token=AGBEPADEPXZ4EIDAZKV3YNDAFONMO');
             this.emotes = await res.json;
-            this.displayEmotes(this.emotes);
+            console.log(JSON.parse(this.emotes));
+            this.displayEmotes();
         } catch(err) {
             console.error(err);
         }
     },
-    displayEmotes: function(emotes){
-        const htmlString = emotes
-            .map((emotes) => {
+    displayEmotes: function(){
+        const htmlString = [this.emotes].map((emotes) => {
                 return `<div id="${emotes.name}" class="emoteContainer">
                             <img src="${loadPage.url_prefix}${emotes.name}${emotes.type}${loadPage.url_suffix}" id="${emotes.name}Img" class="emoteImage" name="${emotes.name}" />
                             <div id="${emotes.name}Title" class="emoteTitle">${emotes.name}</div>
