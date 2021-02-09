@@ -3,8 +3,8 @@ var loadPage = {
     url_prefix: "https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/",
     url_suffix: "?raw=true",
     emotes: {
-        gif: ["catjam", "slam", "fbk_shake"],
-        png: ["fr", "frcoal", "kekw", "uhh", "wtf_kanye", "woecry", "vibeok", "where", "monkaW", "thonk", "completelydistraught", "troll", "yeshoney", "trol"]
+        gif: ["catjam", "slam", "fbk_shake", "wut", "roachsaber", "monkaShake"],
+        png: ["fr", "frcoal", "kekw", "uhh", "wtf_kanye", "woecry", "vibeok", "where", "monkaW", "thonk", "completelydistraught", "troll", "yeshoney", "trol", "thinking_glare", "yeet", "why", "uhhsweat", "wap", "pepebritish", "okaychamp", "hels", "yes", "simp_down", "simp_up", "pogey", "pogu", "pogyou", "pog", "pausechamp", "peepocry", "peepoBrokenHeart", "pepehands", "monkaS"]
     },
     content: "",
     insertData: function(emoteName, ext) {
