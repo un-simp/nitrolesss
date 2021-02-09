@@ -4,17 +4,18 @@ var loadPage = {
     url_suffix: "?raw=true",
     emotes: [],
     content: "",
+    searchBar: "",
     loadEmotes: async function(){
         try {
-            const res = await fetch('https://raw.githubusercontent.com/TheAlphaStream/nitroless/main/contents/emotes.json?token=AGBEPADEPXZ4EIDAZKV3YNDAFONMO');
+            const res = await fetch('https://raw.githubusercontent.com/TheAlphaStream/nitroless/main/contents/emotes.json?token=AGBEPAGXUJTZUF6IKOQJ4NDAFOREO');
             this.emotes = await res.json();
-            this.displayEmotes();
+            this.displayEmotes(this.emotes);
         } catch(err) {
             console.error(err);
         }
     },
-    displayEmotes: function(){
-        const htmlString = this.emotes.map((emotes) => {
+    displayEmotes: function(emotes){
+        const htmlString = emotes.map((emotes) => {
                 return `<div id="${emotes.name}" class="emoteContainer">
                             <img src="${loadPage.url_prefix}${emotes.name}${emotes.type}${loadPage.url_suffix}" id="${emotes.name}Img" class="emoteImage" name="${emotes.name}" />
                             <div id="${emotes.name}Title" class="emoteTitle">${emotes.name}</div>
@@ -24,21 +25,29 @@ var loadPage = {
         this.content.innerHTML = htmlString;
     },
     init: function(params) {
-        this.content = params.content
+        this.content = params.content;
+        this.searchBar = params.searchBar;
         this.loadEmotes();
-        let emoteImages = document.querySelectorAll(".emoteImage");
-        emoteImages.forEach((element) => {
-            element.addEventListener("click", async (event) => {
-                if(!navigator.clipboard) {
-                    alert("Browser not supported");
-                } else {
-                    navigator.clipboard.writeText(event.target.getAttribute("src"))
-                    .then(
-                        () => alert("Successfuly copied ->" + event.target.name),
-                        () => alert("Couldn't copy " + event.target.name)
-                    );
-                }
-            })
+        this.content.addEventListener("click", async (event) => {
+            if(!navigator.clipboard) {
+                alert("Browser not supported");
+            } else {
+                navigator.clipboard.writeText(event.target.getAttribute("src")).then(function() {
+                    if(event.target.getAttribute("src")) {
+                        alert("Successfuly copied ->" + event.target.name)
+                    }
+                }, function() {
+                    alert("Couldn't copy " + event.target.name)
+                });
+            }
+        })
+        this.searchBar.addEventListener("keyup", (e) => {
+            const searchString = e.target.value.toLowerCase();
+            const filteredEmotes = loadPage.emotes.filter((emote) => {
+                return (emote.name.toLowerCase().includes(searchString));
+            });
+            loadPage.displayEmotes(filteredEmotes);
         })
     }
+    
 }
