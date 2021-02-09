@@ -24,6 +24,13 @@ var loadPage = {
 
         this.content.innerHTML = htmlString;
     },
+    search: function(e) {
+        const searchString = e.target.value.toLowerCase();
+        const filteredEmotes = loadPage.emotes.filter((emote) => {
+            return (emote.name.toLowerCase().includes(searchString));
+        });
+        loadPage.displayEmotes(filteredEmotes);
+    },
     init: function(params) {
         this.content = params.content;
         this.searchBar = params.searchBar;
@@ -41,12 +48,11 @@ var loadPage = {
                 });
             }
         })
-        this.searchBar.addEventListener("keyup input", (e) => {
-            const searchString = e.target.value.toLowerCase();
-            const filteredEmotes = loadPage.emotes.filter((emote) => {
-                return (emote.name.toLowerCase().includes(searchString));
-            });
-            loadPage.displayEmotes(filteredEmotes);
+        this.searchBar.addEventListener("keyup", (e) => {
+            loadPage.search(e);
+        })
+        this.searchBar.addEventListener("focusout", (e) => {
+            loadPage.search(e);
         })
     }
     
