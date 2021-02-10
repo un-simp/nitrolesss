@@ -1,5 +1,4 @@
 var loadPage = {
-    doc: document,
     url_prefix: "https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/",
     url_suffix: "?raw=true",
     emotes: [],
@@ -21,31 +20,33 @@ var loadPage = {
                             <div id="${emotes.name}Title" class="emoteTitle">${emotes.name}</div>
                         </div>`;
             }).join('');
-
         this.content.innerHTML = htmlString;
     },
     search: function(e) {
         const searchString = e.target.value.toLowerCase();
-        const filteredEmotes = loadPage.emotes.filter((emote) => {
+        const filteredEmotes = this.emotes.filter((emote) => {
             return (emote.name.toLowerCase().includes(searchString));
         });
         loadPage.displayEmotes(filteredEmotes);
+    },
+    copyClipboard: function(event) {
+        navigator.clipboard.writeText(event.target.getAttribute("src")).then(function() {
+            if(event.target.getAttribute("src")) {
+                alert("Successfuly copied ->" + event.target.name)
+            }
+        }, function() {
+            alert("Couldn't copy " + event.target.name)
+        });
     },
     init: function(params) {
         this.content = params.content;
         this.searchBar = params.searchBar;
         this.loadEmotes();
-        this.content.addEventListener("click", async (event) => {
+        this.content.addEventListener("click", (event) => {
             if(!navigator.clipboard) {
                 alert("Browser not supported");
             } else {
-                navigator.clipboard.writeText(event.target.getAttribute("src")).then(function() {
-                    if(event.target.getAttribute("src")) {
-                        alert("Successfuly copied ->" + event.target.name)
-                    }
-                }, function() {
-                    alert("Couldn't copy " + event.target.name)
-                });
+                loadPage.copyClipboard(event);
             }
         })
         this.searchBar.addEventListener("keyup", (e) => {
@@ -55,5 +56,4 @@ var loadPage = {
             loadPage.search(e);
         })
     }
-    
 }
