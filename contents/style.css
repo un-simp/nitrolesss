@@ -56,6 +56,16 @@ body, html {
     box-shadow: 0px 0px 10px var(--primary-dark-color);
 }
 
+.header #discordButton {
+    margin-top: 20px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background: var(--primary-dark-color);
+    border-radius: 10px;
+}
+
 .contentFlexBox {
     display: flex;
     flex-wrap: wrap;
