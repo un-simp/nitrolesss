@@ -7,7 +7,7 @@ var loadPage = {
     searchBar: "",
     loadEmotes: async function(){
         try {
-            const res = await fetch('https://raw.githubusercontent.com/TheAlphaStream/nitroless/main/contents/emotes.json?token=AGBEPAGXUJTZUF6IKOQJ4NDAFOREO');
+            const res = await fetch('https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/emotes.json');
             this.emotes = await res.json();
             this.displayEmotes(this.emotes);
         } catch(err) {
