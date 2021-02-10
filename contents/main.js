@@ -8,6 +8,7 @@ var loadPage = {
         try {
             const res = await fetch('https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/emotes.json');
             this.emotes = await res.json();
+            this.emotes.sort(this.dynamicSorting("name"));
             this.displayEmotes(this.emotes);
         } catch(err) {
             console.error(err);
@@ -21,6 +22,21 @@ var loadPage = {
                         </div>`;
             }).join('');
         this.content.innerHTML = htmlString;
+    },
+    dynamicSorting: function(property) {
+        let sortOrder = 1;
+        if(property[0] === "-") {
+            sortOrder = -1;
+            property = property.substr(1);
+        }
+
+        return function(a,b) {
+            if(sortOrder == -1) {
+                return b[property].localeCompare(a[property]);
+            } else {
+                return a[property].localeCompare(b[property]);
+            }
+        }
     },
     search: function(e) {
         const searchString = e.target.value.toLowerCase();
