@@ -19,13 +19,15 @@
         <div id="discordButton" onclick="location.href = 'https://discord.gg/2h88T99sPa'">Join Discord</div>
     </div>
     <div id="content" class="contentFlexBox"></div>
+    <div id="paginationContainer" class="footer"></div>
     <div id="footerContainer" class="footer">
         Made by <a href="https://twitter.com/Kutarin_">Alpha_Stream</a> and <a href="https://twitter.com/paraskcd">ParasKCD</a>
     </div>
     <script>
         loadPage.init({
             content: document.getElementById("content"),
-            searchBar: document.getElementById("searchInput")
+            searchBar: document.getElementById("searchInput"),
+            paginationContainer: document.getElementById("paginationContainer")
         });
     </script>
 </body>

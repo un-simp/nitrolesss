@@ -4,32 +4,29 @@ var loadPage = {
     emotes: [],
     content: "",
     searchBar: "",
+    paginatorContainer: "",
     loadEmotes: async function(){
         try {
             const res = await fetch('https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/emotes.json');
             this.emotes = await res.json();
             this.emotes.sort(this.dynamicSorting("name"));
-            this.displayEmotes(this.emotes);
+            this.paginator(this.emotes, 1);
         } catch(err) {
             console.error(err);
         }
     },
     paginator: function(items, page, per_page) {
         var page = page || 1,
-            per_page = per_page || 10,
+            per_page = per_page || 40,
             offset = (page - 1) * per_page,
             paginatedItems = items.slice(offset).slice(0, per_page),
             total_pages = Math.ceil(items.length / per_page);
-
-        return {
-            page: page,
-            per_page: per_page,
-            pre_page: page - 1 ? page - 1 : null,
-            next_page: (total_pages > page) ? page + 1 : null,
-            total: items.length,
-            total_pages: total_pages,
-            data: paginatedItems
+        this.paginatorContainer.innerHTML = "";
+        for(let i = 0; i < total_pages; i++) {
+            this.paginatorContainer.innerHTML += `<div id='page${i+1}' class='paginationPages'>${i+1}</div>`;
         }
+        document.getElementById("page" + page).classList.add("active");
+        this.displayEmotes(paginatedItems);
     },
     displayEmotes: function(emotes){
         const htmlString = emotes.map((emotes) => {
@@ -71,9 +68,19 @@ var loadPage = {
             alert("Couldn't copy " + event.target.name)
         });
     },
+    searchEvent: function(e) {
+        if(e.target.value) {
+            loadPage.search(e);
+            loadPage.paginatorContainer.style.transform = "translateY(50px)";
+        } else {
+            loadPage.paginator(this.emotes, 1);
+            loadPage.paginatorContainer.style.transform = "";
+        }
+    },
     init: function(params) {
         this.content = params.content;
         this.searchBar = params.searchBar;
+        this.paginatorContainer = params.paginationContainer;
         this.loadEmotes();
         this.content.addEventListener("click", (event) => {
             if(!navigator.clipboard) {
@@ -82,11 +89,15 @@ var loadPage = {
                 loadPage.copyClipboard(event);
             }
         })
-        this.searchBar.addEventListener("keyup", (e) => {
-            loadPage.search(e);
+        this.searchBar.addEventListener("keyup", (e) => this.searchEvent(e));
+        this.searchBar.addEventListener("focusout", (e) => this.searchEvent(e));
+        this.paginatorContainer.addEventListener("click", (e) => {
+            for(let i = 0; i < loadPage.paginatorContainer.childElementCount; i++) {
+                if(e.target.id == "page" + (i+1)) {
+                    e.target.classList.add("active");
+                    loadPage.paginator(loadPage.emotes, (i+1))
+                }
+            }
         })
-        this.searchBar.addEventListener("focusout", (e) => {
-            loadPage.search(e);
-        });
     }
 }

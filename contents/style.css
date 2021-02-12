@@ -78,7 +78,7 @@ body, html {
     display: flex;
     justify-content: center;
     padding: 15px;
-    margin: 25px;
+    margin: 15px;
     margin-bottom: 30px;
     border-radius: 10px;
     box-shadow: 0 10px 10px var(--shadow-color);
@@ -87,10 +87,14 @@ body, html {
 .emoteContainer .emoteTitle {
     position: absolute;
     margin-top: 60px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     font-size: 12px;
     text-align: center;
     font-weight: 500;
     text-shadow: 0 0 10px var(--primary-dark-color);
+    width: 90px;
 }
 
 .emoteImage {
@@ -113,6 +117,27 @@ body, html {
     background-color: var(--primary-color);
     color: var(--text-color);
     text-shadow: 0 0 10px var(--primary-dark-color);
+}
+
+#paginationContainer {
+    bottom: 50px;
+    box-shadow: 0px -5px 10px var(--primary-dark-color);
+    display: flex;
+    justify-content: center;
+    transition: 300ms ease;
+}
+
+#paginationContainer .paginationPages{
+    margin-left: 5px;
+    margin-right: 5px;
+    opacity: 0.5;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.paginationPages.active {
+    opacity: 1!important;
+    font-weight: 900!important;
 }
 
 .footer a {
