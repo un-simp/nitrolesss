@@ -128,8 +128,8 @@ body, html {
 }
 
 #paginationContainer .paginationPages{
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
     opacity: 0.5;
     font-weight: 300;
     cursor: pointer;
