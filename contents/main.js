@@ -1,5 +1,5 @@
 var loadPage = {
-    url_prefix: "https://github.com/TheAlphaStream/nitroless-assets/blob/main/assets/",
+    url_prefix: "https://raw.githubusercontent.com/Nitroless/Assets/main/assets/",
     url_suffix: "?raw=true",
     emotes: [],
     content: "",
@@ -7,7 +7,7 @@ var loadPage = {
     paginatorContainer: "",
     loadEmotes: async function(){
         try {
-            const res = await fetch('https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/emotes.json');
+            const res = await fetch('https://raw.githubusercontent.com/Nitroless/Assets/main/emotes.json');
             this.emotes = await res.json();
             this.emotes.sort(this.dynamicSorting("name"));
             this.paginator(this.emotes, 1);
