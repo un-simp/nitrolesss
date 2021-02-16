@@ -40,6 +40,10 @@ body, html {
     text-shadow: 0 0 10px var(--primary-dark-color);
 }
 
+.header #generalInfo {
+    font-size: 14px;
+}
+
 .header #searchBox {
     display: flex;
     justify-content: center;
@@ -79,10 +83,11 @@ body, html {
     background-color: var(--accent-color);
     display: flex;
     justify-content: center;
-    padding: 15px;
-    margin: 15px;
+    padding: 12px;
+    margin: 12px;
     margin-bottom: 30px;
     border-radius: 10px;
+    width: 40px;
     box-shadow: 0 10px 10px var(--shadow-color);
 }
 
@@ -109,6 +114,14 @@ body, html {
     cursor: pointer;
 }
 
+.emoteCopied {
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 12px;
+    animation: fadeInOut ease 2.5s;
+    -webkit-animation: fadeInOut ease 2.5s;
+}
+
 .footer {
     position: fixed;
     left: 0;
@@ -122,7 +135,7 @@ body, html {
 }
 
 #paginationContainer {
-    bottom: 50px;
+    bottom: 0px;
     box-shadow: 0px -5px 10px var(--primary-dark-color);
     display: flex;
     justify-content: center;
@@ -156,4 +169,34 @@ body, html {
         width: 90%!important;
         font-size: 15px!important;
     }
+}
+
+@keyframes fadeInOut {
+    0% {opacity:0;}
+    50% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@-moz-keyframes fadeInOut {
+    0% {opacity:0;}
+    50% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@-webkit-keyframes fadeInOut {
+    0% {opacity:0;}
+    50% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@-o-keyframes fadeInOut {
+    0% {opacity:0;}
+    50% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@-ms-keyframes fadeInOut {
+    0% {opacity:0;}
+    50% {opacity:1;}
+    100% {opacity:0;}
 }
