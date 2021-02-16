@@ -30,7 +30,7 @@ var loadPage = {
     },
     displayEmotes: function(emotes){
         const htmlString = emotes.map((emotes) => {
-                return `<div id="${emotes.name}" class="emoteContainer">
+                return `<div id="${emotes.name}" class="emoteContainer" data-clipboard-text="${loadPage.url_prefix}${emotes.name}${emotes.type}${loadPage.url_suffix}">
                             <img src="${loadPage.url_prefix}${emotes.name}${emotes.type}${loadPage.url_suffix}" id="${emotes.name}Img" class="emoteImage" name="${emotes.name}" />
                             <div id="${emotes.name}Title" class="emoteTitle">${emotes.name}</div>
                         </div>`;
@@ -77,18 +77,17 @@ var loadPage = {
             loadPage.paginatorContainer.style.transform = "";
         }
     },
+    copySuccess: function(e) {
+        alert('Successfully copied -> ' + e.trigger.id);
+    },
+    copyFailure: function(e) {
+        alert('Couldn\'t copy ' + e.trigger.id);
+    },
     init: function(params) {
         this.content = params.content;
         this.searchBar = params.searchBar;
         this.paginatorContainer = params.paginationContainer;
         this.loadEmotes();
-        this.content.addEventListener("click", (event) => {
-            if(!navigator.clipboard) {
-                alert("Browser not supported");
-            } else {
-                loadPage.copyClipboard(event);
-            }
-        })
         this.searchBar.addEventListener("keyup", (e) => this.searchEvent(e));
         this.searchBar.addEventListener("focusout", (e) => this.searchEvent(e));
         this.paginatorContainer.addEventListener("click", (e) => {
