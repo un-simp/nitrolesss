@@ -7,6 +7,7 @@ var loadPage = {
     searchBar: "",
     page_flag: "",
     total_pages: "",
+    search_flag: false,
     loadEmotes: async function(){
         try {
             const res = await fetch(`${loadPage.api_uri}v1/nitroless/emotes`);
@@ -35,7 +36,12 @@ var loadPage = {
                             <div id="${emotes.name}Title" class="emoteTitle">${emotes.name}</div>
                         </div>`;
         }).join('');
-        this.content.innerHTML += htmlString;
+        if(this.search_flag) {
+            this.content.innerHTML = htmlString;
+        } else {
+            this.content.innerHTML += htmlString;
+        }
+        
     },
     dynamicSorting: function(property) {
         let sortOrder = 1;
@@ -61,10 +67,10 @@ var loadPage = {
     searchEvent: function(e) {
         if(e.target.value) {
             loadPage.search(e);
-            loadPage.paginatorContainer.style.transform = "translateY(50px)";
+            loadPage.search_flag = true;
         } else {
             loadPage.paginator(this.emotes, 1);
-            loadPage.paginatorContainer.style.transform = "";
+            loadPage.search_flag = false;
         }
     },
     copySuccess: function(e) {
@@ -92,7 +98,6 @@ var loadPage = {
         this.paginatorContainer = params.paginationContainer;
         this.loadEmotes();
         this.searchBar.addEventListener("keyup", (e) => this.searchEvent(e));
-        this.searchBar.addEventListener("focusout", (e) => this.searchEvent(e));
         window.addEventListener("scroll", () => this.scrollEvent());
     }
 }
