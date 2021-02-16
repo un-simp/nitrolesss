@@ -1,7 +1,6 @@
 var loadPage = {
     api_uri: 'https://api.quiprr.dev/',
     url_prefix: "https://nitroless.quiprr.dev/",
-    url_suffix: "?raw=true",
     emotes: [],
     content: "",
     searchBar: "",
@@ -30,8 +29,8 @@ var loadPage = {
     },
     displayEmotes: function(emotes){
         const htmlString = emotes.map((emotes) => {
-                return `<div id="${emotes.name}" class="emoteContainer" data-clipboard-text="${loadPage.url_prefix}${emotes.name}${emotes.type}${loadPage.url_suffix}">
-                            <img src="${loadPage.url_prefix}${emotes.name}${emotes.type}${loadPage.url_suffix}" id="${emotes.name}Img" class="emoteImage" name="${emotes.name}" />
+                return `<div id="${emotes.name}" class="emoteContainer" data-clipboard-text="${loadPage.url_prefix}${emotes.name}${emotes.type}">
+                            <img src="${loadPage.url_prefix}${emotes.name}${emotes.type}" id="${emotes.name}Img" class="emoteImage" name="${emotes.name}" />
                             <div class="emoteCopied" style="display:none;">COPIED!</div>
                             <div id="${emotes.name}Title" class="emoteTitle">${emotes.name}</div>
                         </div>`;
