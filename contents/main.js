@@ -1,5 +1,6 @@
 var loadPage = {
-    url_prefix: "https://raw.githubusercontent.com/Nitroless/Assets/main/assets/",
+    api_uri: 'https://api.quiprr.dev/',
+    url_prefix: "https://nitroless.quiprr.dev/",
     url_suffix: "?raw=true",
     emotes: [],
     content: "",
@@ -7,7 +8,7 @@ var loadPage = {
     paginatorContainer: "",
     loadEmotes: async function(){
         try {
-            const res = await fetch('https://raw.githubusercontent.com/Nitroless/Assets/main/emotes.json');
+            const res = await fetch(`${loadPage.api_uri}v1/nitroless/emotes`);
             this.emotes = await res.json();
             this.emotes.sort(this.dynamicSorting("name"));
             this.paginator(this.emotes, 1);
@@ -32,9 +33,10 @@ var loadPage = {
         const htmlString = emotes.map((emotes) => {
                 return `<div id="${emotes.name}" class="emoteContainer" data-clipboard-text="${loadPage.url_prefix}${emotes.name}${emotes.type}${loadPage.url_suffix}">
                             <img src="${loadPage.url_prefix}${emotes.name}${emotes.type}${loadPage.url_suffix}" id="${emotes.name}Img" class="emoteImage" name="${emotes.name}" />
+                            <div class="emoteCopied" style="display:none;">COPIED!</div>
                             <div id="${emotes.name}Title" class="emoteTitle">${emotes.name}</div>
                         </div>`;
-            }).join('');
+        }).join('');
         this.content.innerHTML = htmlString;
     },
     dynamicSorting: function(property) {
@@ -69,7 +71,12 @@ var loadPage = {
         }
     },
     copySuccess: function(e) {
-        alert('Successfully copied -> ' + e.trigger.id);
+        document.getElementById(e.trigger.id).getElementsByClassName('emoteImage')[0].style.display = 'none';
+        document.getElementById(e.trigger.id).getElementsByClassName('emoteCopied')[0].style.display = '';
+        setTimeout(() => {
+            document.getElementById(e.trigger.id).getElementsByClassName('emoteImage')[0].style.display = '';
+            document.getElementById(e.trigger.id).getElementsByClassName('emoteCopied')[0].style.display = 'none';
+        }, 2500);
     },
     copyFailure: function(e) {
         alert('Couldn\'t copy ' + e.trigger.id);
