@@ -19,7 +19,7 @@ var loadPage = {
     },
     paginator: function(items, page, per_page) {
         var page = page || 1,
-            per_page = per_page || 100,
+            per_page = per_page || 150,
             offset = (page - 1) * per_page,
             paginatedItems = items.slice(offset).slice(0, per_page),
             total_pages = Math.ceil(items.length / per_page);
@@ -39,8 +39,7 @@ var loadPage = {
             this.content.innerHTML = htmlString;
         } else {
             this.content.innerHTML += htmlString;
-        }
-        
+        }   
     },
     dynamicSorting: function(property) {
         let sortOrder = 1;
@@ -73,11 +72,12 @@ var loadPage = {
         }
     },
     copySuccess: function(e) {
-        document.getElementById(e.trigger.id).getElementsByClassName('emoteImage')[0].style.display = 'none';
-        document.getElementById(e.trigger.id).getElementsByClassName('emoteCopied')[0].style.display = '';
+        let el = document.getElementById(e.trigger.id);
+        el.getElementsByClassName('emoteImage')[0].style.display = 'none';
+        el.getElementsByClassName('emoteCopied')[0].style.display = '';
         setTimeout(() => {
-            document.getElementById(e.trigger.id).getElementsByClassName('emoteImage')[0].style.display = '';
-            document.getElementById(e.trigger.id).getElementsByClassName('emoteCopied')[0].style.display = 'none';
+            el.getElementsByClassName('emoteImage')[0].style.display = '';
+            el.getElementsByClassName('emoteCopied')[0].style.display = 'none';
         }, 2500);
     },
     copyFailure: function(e) {

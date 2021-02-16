@@ -10,14 +10,21 @@
 </head>
 <body>
     <div id="headerContainer" class="header">
-        <div id="logoContainer" class="logo">
-            <div id="logo">Nitroless</div>
-            <div id="generalInfo">Custom emojis on Discord without Nitro.</div>
+        <div class="leftHeaderContent">
+            <div id="hamburgerMenu"></div>
+            <div id="logoContainer" class="logo">
+                <div id="logo">Nitroless</div>
+                <div id="generalInfo">Custom emojis on Discord without Nitro.</div>
+            </div>
+            <div id="sidebarContainer">
+                <div id="homeButton" class="sidebarButtons active">Home</div>
+                <div id="aboutButton" class="sidebarButtons">About</div>
+                <div id="creditsButton" class="sidebarButtons">Credits</div>
+            </div>
         </div>
-        <div id="searchBox">
-            <input type="search" id="searchInput" class="inputTextField" placeholder="Search for emojis..." />
-        </div>
-        <div id="discordButton" onclick="location.href='https://discord.gg/2h88T99sPa'">Join Discord</div>
+    </div>
+    <div id="searchBox">
+        <input type="search" id="searchInput" class="inputTextField" placeholder="Search for emojis..." />
     </div>
     <div id="content" class="contentFlexBox"></div>
     <script src="contents/main.js"></script>

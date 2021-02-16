@@ -11,65 +11,87 @@
     --shadow-color: #21212140;
 }
 
-body {
-  background-color: #2c2f33;
+*:focus {
+    outline: none;
 }
 
 body, html {
     margin: 0;
     padding: 0;
     color: var(--primary-text);
+    background-color: #2c2f33;
     font-family: 'Roboto', sans-serif;
 }
 
 .header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    padding: 50px;
-    box-shadow: 0 10px 10px var(--shadow-color);
-}
-
-.header .logo #logo {
-    font-size: 75px;
-    font-weight: 900;
-    font-family: 'Uni Sans';
-    text-shadow: 0 0 10px var(--primary-dark-color);
-}
-
-.header #generalInfo {
-    font-size: 14px;
-}
-
-.header #searchBox {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.header #searchBox .inputTextField {
-    appearance: none;
-    border: none;
-    border-radius: 33px;
-    height: 50px;
-    width: 50%;
-    font-size: 20px;
-    color: var(--primary-dark-color);
-    padding: 0px 20px;
-    box-shadow: 0px 0px 10px var(--primary-dark-color);
-}
-
-.header #discordButton {
-    margin-top: 20px;
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: var(--primary-dark-color);
+    box-shadow: 0px 5px 10px var(--shadow-color);
     padding: 20px;
-    background: var(--primary-dark-color);
+}
+
+.header .leftHeaderContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header .leftHeaderContent #hamburgerMenu {
+    display: none;
+}
+
+.header .leftHeaderContent .logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.header .leftHeaderContent .logo #logo {
+    font-family: "Uni Sans";
+    font-size: 50px;
+}
+
+.header .leftHeaderContent .logo #generalInfo {
+    font-weight: 100;
+    font-size: 15px;
+}
+
+.header #sidebarContainer {
+    display: flex;
+}
+
+.header #sidebarContainer .sidebarButtons {
+    padding: 20px 0px; 
+    margin-left: 25px;
+    font-size: 25px;
+    font-weight: 200;
+    transition: 250ms ease;
+}
+
+.header #sidebarContainer .sidebarButtons.active, .header #sidebarContainer .sidebarButtons:hover  {
+    font-weight: bold;
+}
+
+.header #sidebarContainer .sidebarButtons:hover {
+    cursor: pointer;
+}
+
+#searchBox {
+    margin: 10px auto;
+    width: 50%;
+    background-color: var(--primary-dark-color);
+    padding: 10px;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px var(--shadow-color);
+}
+
+.inputTextField {
+    height: 100%;
+    width: 100%;
+    padding: 8px 10px;
+    color: var(--text-color);
+    border: 0;
+    background: transparent;
 }
 
 .contentFlexBox {
@@ -89,6 +111,11 @@ body, html {
     border-radius: 10px;
     width: 40px;
     box-shadow: 0 10px 10px var(--shadow-color);
+    transition: 250ms ease;
+}
+
+.emoteContainer:hover {
+    transform: scale(1.2);
 }
 
 .emoteContainer .emoteTitle {
@@ -101,7 +128,7 @@ body, html {
     text-align: center;
     font-weight: 500;
     text-shadow: 0 0 10px var(--primary-dark-color);
-    width: 90px;
+    width: 85px;
 }
 
 .emoteImage {
