@@ -5,7 +5,8 @@ var loadPage = {
     emotes: [],
     content: "",
     searchBar: "",
-    paginatorContainer: "",
+    page_flag: "",
+    total_pages: "",
     loadEmotes: async function(){
         try {
             const res = await fetch(`${loadPage.api_uri}v1/nitroless/emotes`);
@@ -18,15 +19,12 @@ var loadPage = {
     },
     paginator: function(items, page, per_page) {
         var page = page || 1,
-            per_page = per_page || 40,
+            per_page = per_page || 100,
             offset = (page - 1) * per_page,
             paginatedItems = items.slice(offset).slice(0, per_page),
             total_pages = Math.ceil(items.length / per_page);
-        this.paginatorContainer.innerHTML = "";
-        for(let i = 0; i < total_pages; i++) {
-            this.paginatorContainer.innerHTML += `<div id='page${i+1}' class='paginationPages'>${i+1}</div>`;
-        }
-        document.getElementById("page" + page).classList.add("active");
+        this.page_flag = page+1;
+        this.total_pages = total_pages;
         this.displayEmotes(paginatedItems);
     },
     displayEmotes: function(emotes){
@@ -37,7 +35,7 @@ var loadPage = {
                             <div id="${emotes.name}Title" class="emoteTitle">${emotes.name}</div>
                         </div>`;
         }).join('');
-        this.content.innerHTML = htmlString;
+        this.content.innerHTML += htmlString;
     },
     dynamicSorting: function(property) {
         let sortOrder = 1;
@@ -45,7 +43,6 @@ var loadPage = {
             sortOrder = -1;
             property = property.substr(1);
         }
-
         return function(a,b) {
             if(sortOrder == -1) {
                 return b[property].localeCompare(a[property]);
@@ -81,6 +78,14 @@ var loadPage = {
     copyFailure: function(e) {
         alert('Couldn\'t copy ' + e.trigger.id);
     },
+    scrollEvent: function() {
+        const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+        if(clientHeight + scrollTop >= scrollHeight - 5) {
+            if(loadPage.page_flag <= loadPage.total_pages) {
+                loadPage.paginator(loadPage.emotes, loadPage.page_flag);
+            }
+        }
+    },
     init: function(params) {
         this.content = params.content;
         this.searchBar = params.searchBar;
@@ -88,13 +93,6 @@ var loadPage = {
         this.loadEmotes();
         this.searchBar.addEventListener("keyup", (e) => this.searchEvent(e));
         this.searchBar.addEventListener("focusout", (e) => this.searchEvent(e));
-        this.paginatorContainer.addEventListener("click", (e) => {
-            for(let i = 0; i < loadPage.paginatorContainer.childElementCount; i++) {
-                if(e.target.id == "page" + (i+1)) {
-                    e.target.classList.add("active");
-                    loadPage.paginator(loadPage.emotes, (i+1))
-                }
-            }
-        })
+        window.addEventListener("scroll", () => this.scrollEvent());
     }
 }
