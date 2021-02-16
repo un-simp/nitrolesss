@@ -98,5 +98,8 @@ var loadPage = {
         this.loadEmotes();
         this.searchBar.addEventListener("keyup", (e) => this.searchEvent(e));
         window.addEventListener("scroll", () => this.scrollEvent());
+        let clipboard = new ClipboardJS('.emoteContainer');
+        clipboard.on('success', this.copySuccess);
+        clipboard.on('error', this.copyFailure);
     }
 }
