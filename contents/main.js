@@ -1,6 +1,6 @@
 var loadPage = {
     api_uri: 'https://api.quiprr.dev/',
-    url_prefix: "https://raw.githubusercontent.com/Nitroless/Assets/main/assets/",
+    url_prefix: "https://nitroless.quiprr.dev/",
     url_suffix: "?raw=true",
     emotes: [],
     content: "",
