@@ -16,7 +16,7 @@
             "purpose": "any maskable"
         }
     ],
-    "start_url": "/nitroless/index.html",
+    "start_url": "index.html",
     "display": "standalone",
     "theme_color": "#36393F",
     "background_color": "#23272A"

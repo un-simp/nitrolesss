@@ -59,15 +59,6 @@ var loadPage = {
         });
         loadPage.displayEmotes(filteredEmotes);
     },
-    copyClipboard: function(event) {
-        navigator.clipboard.writeText(event.target.getAttribute("src")).then(function() {
-            if(event.target.getAttribute("src")) {
-                alert("Successfuly copied ->" + event.target.name)
-            }
-        }, function() {
-            alert("Couldn't copy " + event.target.name)
-        });
-    },
     searchEvent: function(e) {
         if(e.target.value) {
             loadPage.search(e);
