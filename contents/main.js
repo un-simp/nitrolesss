@@ -64,9 +64,9 @@ var loadPage = {
         loadPage.displayEmotes(filteredEmotes);
     },
     searchEvent: function(e) {
+        loadPage.search_flag = true;
         if(e.target.value) {
             loadPage.search(e);
-            loadPage.search_flag = true;
         } else {
             loadPage.paginator(this.emotes, 1);
             loadPage.search_flag = false;
