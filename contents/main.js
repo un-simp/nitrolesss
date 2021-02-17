@@ -4,6 +4,7 @@ var loadPage = {
     emotes: [],
     content: "",
     searchBar: "",
+    sidebarOpener: "",
     page_flag: "",
     total_pages: "",
     search_flag: false,
@@ -19,7 +20,7 @@ var loadPage = {
     },
     paginator: function(items, page, per_page) {
         var page = page || 1,
-            per_page = per_page || 150,
+            per_page = per_page || 100,
             offset = (page - 1) * per_page,
             paginatedItems = items.slice(offset).slice(0, per_page),
             total_pages = Math.ceil(items.length / per_page);
@@ -63,9 +64,9 @@ var loadPage = {
         loadPage.displayEmotes(filteredEmotes);
     },
     searchEvent: function(e) {
+        loadPage.search_flag = true;
         if(e.target.value) {
             loadPage.search(e);
-            loadPage.search_flag = true;
         } else {
             loadPage.paginator(this.emotes, 1);
             loadPage.search_flag = false;
@@ -91,11 +92,16 @@ var loadPage = {
             }
         }
     },
+    openSidebar: function(e) {
+        e.target.classList.toggle("open");
+        document.getElementById("sidebarContainer").classList.toggle("open");
+    },
     init: function(params) {
         this.content = params.content;
         this.searchBar = params.searchBar;
-        this.paginatorContainer = params.paginationContainer;
+        this.sidebarOpener = params.sidebarOpener;
         this.loadEmotes();
+        this.sidebarOpener.addEventListener("click", (e) => this.openSidebar(e));
         this.searchBar.addEventListener("keyup", (e) => this.searchEvent(e));
         window.addEventListener("scroll", () => this.scrollEvent());
         let clipboard = new ClipboardJS('.emoteContainer');

@@ -11,7 +11,7 @@
 <body>
     <div id="headerContainer" class="header">
         <div class="leftHeaderContent">
-            <div id="hamburgerMenu" onclick="this.classList.toggle('open')">
+            <div id="hamburgerMenu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -37,6 +37,7 @@
         loadPage.init({
             content: document.getElementById("content"),
             searchBar: document.getElementById("searchInput"),
+            sidebarOpener: document.getElementById("hamburgerMenu")
         });
     </script>
 </body>

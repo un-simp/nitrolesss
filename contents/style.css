@@ -63,6 +63,7 @@ body, html {
     border-radius: 9px;
     opacity: 1;
     left: 0;
+    pointer-events: none;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -262,24 +263,30 @@ body, html {
         margin-right: 10%;
     }
     .header #sidebarContainer {
-        display: none;
         flex-direction: column;
         position: absolute;
-        top: 110px;
+        top: 100px;
         left: 0;
+        transform: translateX(-200px); 
         width: 50%;
         height: 100%;
         z-index: 1;
         padding-top: 20px;
         background-color: var(--primary-dark-color);
         box-shadow: 10px 0px 10px var(--shadow-color);
+        transition: 250ms ease;
     }
-    #logo {
-        font-size: 50px!important;
+    .header #sidebarContainer.open {
+        transform: translateX(0px); 
     }
-    .inputTextField {
-        width: 90%!important;
-        font-size: 15px!important;
+    .header .leftHeaderContent .logo #logo {
+        font-size: 40px;
+    }
+    .header .leftHeaderContent .logo #generalInfo {
+        font-size: 12px;
+    }
+    #searchBox {
+        width: 80%;
     }
 }
 
