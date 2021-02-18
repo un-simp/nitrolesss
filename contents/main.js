@@ -91,8 +91,6 @@ var loadPage = {
                 loadPage.paginator(loadPage.emotes, loadPage.page_flag);
             }
         }
-        var prevScrollpos = window.pageYOffset;
-        
     },
     openSidebar: function(e) {
         e.target.classList.toggle("open");
