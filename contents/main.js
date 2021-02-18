@@ -8,6 +8,7 @@ var loadPage = {
     page_flag: "",
     total_pages: "",
     search_flag: false,
+    prevScrollpos: window.pageYOffset,
     loadEmotes: async function(){
         try {
             const res = await fetch(`${loadPage.api_uri}v1/nitroless/emotes`);
@@ -91,6 +92,19 @@ var loadPage = {
                 loadPage.paginator(loadPage.emotes, loadPage.page_flag);
             }
         }
+        var currentScrollPos = window.pageYOffset;
+        if (this.prevScrollpos > currentScrollPos || currentScrollPos < 0) {
+            document.getElementById("searchBox").classList.remove("headerHidden");
+            document.getElementById("headerContainer").classList.remove("hide");
+        } else {
+            document.getElementById("searchBox").classList.add("headerHidden");
+            document.getElementById("headerContainer").classList.add("hide");
+            if(document.getElementById("sidebarContainer").classList.contains("open")) {
+                document.getElementById("sidebarContainer").classList.remove("open");
+                loadPage.sidebarOpener.classList.toggle("open");
+            }
+        }
+        this.prevScrollpos = currentScrollPos;
     },
     openSidebar: function(e) {
         e.target.classList.toggle("open");
@@ -107,21 +121,5 @@ var loadPage = {
         let clipboard = new ClipboardJS('.emoteContainer');
         clipboard.on('success', this.copySuccess);
         clipboard.on('error', this.copyFailure);
-        var prevScrollpos = window.pageYOffset;
-        window.onscroll = function() {
-            var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos > currentScrollPos || currentScrollPos <= 0) {
-                document.getElementById("searchBox").classList.remove("headerHidden");
-                document.getElementById("headerContainer").classList.remove("hide");
-            } else {
-                document.getElementById("searchBox").classList.add("headerHidden");
-                document.getElementById("headerContainer").classList.add("hide");
-                if(document.getElementById("sidebarContainer").classList.contains("open")) {
-                    document.getElementById("sidebarContainer").classList.remove("open");
-                    loadPage.sidebarOpener.classList.toggle("open");
-                }
-            }
-            prevScrollpos = currentScrollPos;
-        }
     }
 }
