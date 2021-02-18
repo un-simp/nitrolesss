@@ -118,6 +118,10 @@ var loadPage = {
             } else {
                 document.getElementById("searchBox").classList.add("headerHidden");
                 document.getElementById("headerContainer").classList.add("hide");
+                if(document.getElementById("sidebarContainer").classList.contains("open")) {
+                    document.getElementById("sidebarContainer").classList.remove("open");
+                    loadPage.sidebarOpener.classList.toggle("open");
+                }
             }
             prevScrollpos = currentScrollPos;
         }

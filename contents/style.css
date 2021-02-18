@@ -3,7 +3,7 @@
 
 :root {
     --primary-color: #36393F;
-    --primary-dark-color: #23272a96;
+    --primary-dark-color: #23272ad1;
     --text-color: #FFFFFF;
     --primary-text: #FFFFFF;
     --secondary-text: #a2a3a8;
@@ -30,7 +30,6 @@ body, html {
     display: flex;
     flex-direction: column;
     background-color: var(--primary-dark-color);
-    box-shadow: 0px 5px 10px var(--shadow-color);
     padding: 20px;
     z-index: 2;
 }
@@ -131,7 +130,7 @@ body, html {
 }
 
 .header #sidebarContainer .sidebarButtons {
-    padding: 15px 0px; 
+    padding: 15px 0px;
     margin-left: 25px;
     font-size: 25px;
     font-weight: 200;
@@ -168,7 +167,7 @@ body, html {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 200px;
+    padding-bottom: 250px;
 }
 
 .emoteContainer {
@@ -280,18 +279,27 @@ body, html {
         position: absolute;
         top: 85px;
         left: 0;
-        transform: translateX(-250px); 
-        width: 50%;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        width: 100vw;
         height: 1000%;
         z-index: 3;
         padding-top: 20px;
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         background-color: var(--primary-dark-color);
-        transition: 250ms ease;
+        transition: 350ms ease;
+        text-align: center;
     }
     .header #sidebarContainer.open {
-        transform: translateX(0px); 
+        pointer-events: all;
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    .header #sidebarContainer .sidebarButtons {
+      padding: 20px 0px;
+      margin-left: 0;
     }
     .header .leftHeaderContent .logo #logo {
         font-size: 40px;
