@@ -3,7 +3,8 @@
 
 :root {
     --primary-color: #36393F;
-    --primary-dark-color: #23272ad1;
+    --header-color: #36393FD1;
+    --primary-dark-color: #23272a;
     --text-color: #FFFFFF;
     --primary-text: #FFFFFF;
     --secondary-text: #a2a3a8;
@@ -29,30 +30,17 @@ body, html {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: var(--primary-dark-color);
+    background-color: var(--primary-color);
     padding: 20px;
     z-index: 2;
 }
 
-.header:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
 .header .leftHeaderContent {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
-.header .leftHeaderContent #hamburgerMenu {
+.header #hamburgerMenu {
     display: none;
     width: 30px;
     -webkit-transform: rotate(0deg);
@@ -66,7 +54,7 @@ body, html {
     cursor: pointer;
 }
 
-.header .leftHeaderContent #hamburgerMenu span {
+.header #hamburgerMenu span {
     display: block;
     position: relative;
     height: 1px;
@@ -148,7 +136,7 @@ body, html {
 #searchBox {
     margin: 120px auto 10px auto;
     width: 50%;
-    background-color: var(--primary-dark-color);
+    background-color: var(--header-color);
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px var(--shadow-color);
@@ -260,19 +248,21 @@ body, html {
 @media only screen and (max-width: 900px) {
     .header {
       transition: 250ms ease;
+      padding: 20px 0 20px 0;
+      background-color: var(--header-color);
     }
     .header.hide {
       transform: translateY(-100px);
     }
     .header .leftHeaderContent {
-        justify-content: left;
+        display: block;
+        text-align: center;
     }
     .header #hamburgerMenu {
         display: block!important;
-        margin-right: 5%;
-        justify-content: center;
-        align-items: center;
+        position: absolute;
         margin-top: 15px;
+        left: 15px;
     }
     .header #sidebarContainer {
         flex-direction: column;
@@ -288,7 +278,7 @@ body, html {
         padding-top: 20px;
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        background-color: var(--primary-dark-color);
+        background-color: var(--header-color);
         transition: 350ms ease;
         text-align: center;
     }
@@ -316,7 +306,7 @@ body, html {
     #searchBox.headerHidden {
       transform: translate(-50%, -90px);
     }
-    #searchBox:before {
+    #searchBox:before, .header:before {
         content: "";
         position: absolute;
         top: 0;
