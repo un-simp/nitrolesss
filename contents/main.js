@@ -93,7 +93,7 @@ var loadPage = {
             }
         }
         var currentScrollPos = window.pageYOffset;
-        if (this.prevScrollpos > currentScrollPos || currentScrollPos <= 0) {
+        if (this.prevScrollpos > currentScrollPos || currentScrollPos == 0) {
             document.getElementById("searchBox").classList.remove("headerHidden");
             document.getElementById("headerContainer").classList.remove("hide");
         } else {
