@@ -3,7 +3,7 @@
 
 :root {
     --primary-color: #36393F;
-    --primary-dark-color: #23272a;
+    --primary-dark-color: #23272a96;
     --text-color: #FFFFFF;
     --primary-text: #FFFFFF;
     --secondary-text: #a2a3a8;
@@ -24,11 +24,27 @@ body, html {
 }
 
 .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-color: var(--primary-dark-color);
     box-shadow: 0px 5px 10px var(--shadow-color);
     padding: 20px;
+    z-index: 2;
+}
+
+.header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .header .leftHeaderContent {
@@ -40,9 +56,6 @@ body, html {
 .header .leftHeaderContent #hamburgerMenu {
     display: none;
     width: 30px;
-    height: 45px;
-    position: relative;
-    top: 20px;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -56,7 +69,7 @@ body, html {
 
 .header .leftHeaderContent #hamburgerMenu span {
     display: block;
-    position: absolute;
+    position: relative;
     height: 1px;
     width: 100%;
     background: #ffffff;
@@ -79,15 +92,15 @@ body, html {
 }
 
 #hamburgerMenu span:nth-child(2) {
-  top: 10px;
+  top: 5px;
 }
 
 #hamburgerMenu span:nth-child(3) {
-  top: 20px;
+  top: 10px;
 }
 
 #hamburgerMenu.open span:nth-child(1) {
-  top: 18px;
+  top: 10px;
   -webkit-transform: rotate(135deg);
   -moz-transform: rotate(135deg);
   -o-transform: rotate(135deg);
@@ -100,16 +113,11 @@ body, html {
 }
 
 #hamburgerMenu.open span:nth-child(3) {
-  top: 18px;
+  top: 8px;
   -webkit-transform: rotate(-135deg);
   -moz-transform: rotate(-135deg);
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
-}
-
-.header .leftHeaderContent .logo {
-    display: flex;
-    flex-direction: column;
 }
 
 .header .leftHeaderContent .logo #logo {
@@ -117,17 +125,13 @@ body, html {
     font-size: 50px;
 }
 
-.header .leftHeaderContent .logo #generalInfo {
-    font-weight: 100;
-    font-size: 15px;
-}
-
 .header #sidebarContainer {
     display: flex;
+    margin-right: 30px;
 }
 
 .header #sidebarContainer .sidebarButtons {
-    padding: 20px 0px; 
+    padding: 15px 0px; 
     margin-left: 25px;
     font-size: 25px;
     font-weight: 200;
@@ -143,7 +147,7 @@ body, html {
 }
 
 #searchBox {
-    margin: 10px auto;
+    margin: 120px auto 10px auto;
     width: 50%;
     background-color: var(--primary-dark-color);
     padding: 10px;
@@ -164,7 +168,7 @@ body, html {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px 0px 120px 0px;
+    padding-bottom: 200px;
 }
 
 .emoteContainer {
@@ -256,24 +260,28 @@ body, html {
 
 @media only screen and (max-width: 900px) {
     .header .leftHeaderContent {
-        justify-content: center;
+        justify-content: left;
     }
     .header #hamburgerMenu {
         display: block!important;
-        margin-right: 10%;
+        margin-right: 5%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
     }
     .header #sidebarContainer {
         flex-direction: column;
         position: absolute;
-        top: 100px;
+        top: 85px;
         left: 0;
-        transform: translateX(-200px); 
+        transform: translateX(-250px); 
         width: 50%;
-        height: 100%;
-        z-index: 1;
+        height: 1000%;
+        z-index: 2;
         padding-top: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         background-color: var(--primary-dark-color);
-        box-shadow: 10px 0px 10px var(--shadow-color);
         transition: 250ms ease;
     }
     .header #sidebarContainer.open {
@@ -282,11 +290,12 @@ body, html {
     .header .leftHeaderContent .logo #logo {
         font-size: 40px;
     }
-    .header .leftHeaderContent .logo #generalInfo {
-        font-size: 12px;
-    }
     #searchBox {
+        margin: 100px auto 10px auto;
         width: 80%;
+    }
+    .contentFlexBox{
+      padding-bottom: 20px;
     }
 }
 
