@@ -112,7 +112,7 @@ var loadPage = {
         var prevScrollpos = window.pageYOffset;
         window.onscroll = function() {
             var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos > currentScrollPos || currentScrollPos == 0) {
+            if (prevScrollpos > currentScrollPos || currentScrollPos <= 0) {
                 document.getElementById("searchBox").classList.remove("headerHidden");
                 document.getElementById("headerContainer").classList.remove("hide");
             } else {
