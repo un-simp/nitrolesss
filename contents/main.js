@@ -91,6 +91,8 @@ var loadPage = {
                 loadPage.paginator(loadPage.emotes, loadPage.page_flag);
             }
         }
+        var prevScrollpos = window.pageYOffset;
+        
     },
     openSidebar: function(e) {
         e.target.classList.toggle("open");
@@ -107,5 +109,17 @@ var loadPage = {
         let clipboard = new ClipboardJS('.emoteContainer');
         clipboard.on('success', this.copySuccess);
         clipboard.on('error', this.copyFailure);
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("searchBox").classList.remove("headerHidden");
+                document.getElementById("headerContainer").classList.remove("hide");
+            } else {
+                document.getElementById("searchBox").classList.add("headerHidden");
+                document.getElementById("headerContainer").classList.add("hide");
+            }
+            prevScrollpos = currentScrollPos;
+        }
     }
 }
