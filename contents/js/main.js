@@ -29,6 +29,9 @@ var loadPage = {
         this.total_pages = total_pages;
         this.displayEmotes(paginatedItems);
     },
+    loadAbout: function() {
+        aboutStuff.init({content: this.content});
+    },
     displayEmotes: function(emotes){
         const htmlString = emotes.map((emotes) => {
                 return `<div id="${emotes.name}" class="emoteContainer" data-clipboard-text="${loadPage.url_prefix}${emotes.name}${emotes.type}">

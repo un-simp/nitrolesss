@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-@font-face { font-family: 'Uni Sans'; src: url('./uni-sans.otf'); }
+@font-face { font-family: 'Uni Sans'; src: url('../fonts/uni-sans.otf'); }
 
 :root {
     --primary-color: #36393F;
@@ -140,6 +140,12 @@ body, html {
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px var(--shadow-color);
+    transition: 250ms ease;
+}
+
+#searchBox.hide {
+    opacity: 0;
+    transform: translateY(-50px);
 }
 
 .inputTextField {
@@ -206,43 +212,18 @@ body, html {
     -webkit-animation: fadeInOut ease 2.5s;
 }
 
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
-    padding: 20px 0px;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    text-shadow: 0 0 10px var(--primary-dark-color);
+.descriptionNitroless {
+  background-color: var(--accent-color);
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: -50px;
+  margin-bottom: 20px;
 }
 
-#paginationContainer {
-    bottom: 0px;
-    box-shadow: 0px -5px 10px var(--primary-dark-color);
-    display: flex;
-    justify-content: center;
-    transition: 300ms ease;
-}
-
-#paginationContainer .paginationPages{
-    margin-left: 10px;
-    margin-right: 10px;
-    opacity: 0.5;
-    font-weight: 300;
-    cursor: pointer;
-}
-
-.paginationPages.active {
-    opacity: 1!important;
-    font-weight: 900!important;
-}
-
-.footer a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 900;
+.descriptionNitroless #headingAbout {
+  font-size: 50px;
+  font-family: Uni Sans;
 }
 
 @media only screen and (max-width: 900px) {
