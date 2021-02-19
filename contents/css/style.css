@@ -219,11 +219,47 @@ body, html {
   border-radius: 10px;
   margin-top: -50px;
   margin-bottom: 20px;
+  width: 80%;
 }
 
 .descriptionNitroless #headingAbout {
   font-size: 50px;
   font-family: Uni Sans;
+}
+
+.nitrolessTeam {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.nitrolessTeam .devContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--accent-color);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.nitrolessTeam .devContainer .devDisplayPicture {
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+}
+
+.nitrolessTeam .devContainer .devInfo {
+  margin-left: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.nitrolessTeam .devContainer .devInfo .devName {
+  font-weight: 900;
+}
+
+.nitrolessTeam .devContainer .devInfo .devDescription {
+  font-weight: 300;
 }
 
 @media only screen and (max-width: 900px) {

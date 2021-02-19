@@ -91,7 +91,7 @@ var loadPage = {
     scrollEvent: function() {
         const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
         if(clientHeight + scrollTop >= scrollHeight - 5) {
-            if(loadPage.page_flag <= loadPage.total_pages) {
+            if(loadPage.page_flag <= loadPage.total_pages && document.getElementById("homeButton").classList.contains("active")) {
                 loadPage.paginator(loadPage.emotes, loadPage.page_flag);
             }
         }

@@ -23,6 +23,12 @@ var sidebarStuff = {
                         searchbar.classList.add("hide");
                         loadPage.loadAbout()
                         break;
+                    case "twitterButton":
+                        location.href = "https://twitter.com/Nitroless_";
+                        break;
+                    case "discordButton":
+                        location.href = "https://discord.gg/2h88T99sPa";
+                        break;
                 }
             }
         });
