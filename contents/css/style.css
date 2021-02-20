@@ -241,6 +241,13 @@ body, html {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 10px;
+  transition: 250ms ease;
+}
+
+.nitrolessTeam .devContainer:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 1px 10px 10px #0005;
 }
 
 .nitrolessTeam .devContainer .devDisplayPicture {

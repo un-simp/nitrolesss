@@ -1,3 +1,5 @@
+//Script by Paras Khanchandani https://twitter.com/ParasKCD
+
 var domMaker = {
     element: "",
     domAppender: function(params) {

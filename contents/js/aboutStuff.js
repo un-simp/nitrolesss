@@ -1,29 +1,29 @@
 var aboutStuff = {
     contentDiv: "",
     creditsMaker: function(params) {
-        let devDiv = new domMaker.init({
+        let devDiv = domMaker.init({
                 type: "div",
                 id: params.devID,
                 className: "devContainer",
             }),
-            devImg = new domMaker.init({
+            devImg = domMaker.init({
                 type: "img",
                 id: params.devID + "DisplayPicture",
                 className: "devDisplayPicture",
                 src: params.displayPicture,
             }),
-            devInfo = new domMaker.init({
+            devInfo = domMaker.init({
                 type: "div",
                 id: params.devID + "DevInfo",
                 className: "devInfo"
             }),
-            devName = new domMaker.init({
+            devName = domMaker.init({
                 type: "div",
                 id: params.devID + "DevName",
                 className: "devName",
                 innerHTML: params.devName
             }),
-            devRole = new domMaker.init({
+            devRole = domMaker.init({
                 type: "div",
                 id: params.devID + "DevDesc",
                 className: "devDescription",
@@ -45,19 +45,19 @@ var aboutStuff = {
     },
     init: function(params) {
         this.contentDiv = params.content;
-        let nitrolessDescription = new domMaker.init({
+        let nitrolessDescription = domMaker.init({
                 type: "div",
                 className: "descriptionNitroless",
                 innerHTML: "<div id='headingAbout'>About</div><br>A Project where you can use any custom emoji on Discord servers without Nitro!<br><br>Just tap the emoji and paste it in the discord chat."
             }),
-            team = new domMaker.init({
+            team = domMaker.init({
                 type: "div",
                 className: "nitrolessTeam",
             }),
             alpha = this.creditsMaker({
                 devID: "alpha",
                 displayPicture: "contents/socialPictures/alpha.jpg",
-                devName: "Alpha",
+                devName: "Alpha_Stream",
                 devRole: "Idea | Assets | Website",
                 socialURL: "https://twitter.com/Kutarin_"
             }),
@@ -78,7 +78,7 @@ var aboutStuff = {
             alt = this.creditsMaker({
                 devID: "alt",
                 displayPicture: "contents/socialPictures/alt.jpg",
-                devName: "Althiometer",
+                devName: "Althio",
                 devRole: "MacOS App",
                 socialURL: "https://twitter.com/a1thio"
             }),
@@ -99,7 +99,7 @@ var aboutStuff = {
             quippr = this.creditsMaker({
                 devID: "quippr",
                 displayPicture: "contents/socialPictures/quippr.png",
-                devName: "Quippr",
+                devName: "Quiprr",
                 devRole: "VPS | Api | Bot",
                 socialURL: "https://twitter.com/quiprr"
             });
