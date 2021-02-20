@@ -145,7 +145,7 @@ body, html {
 
 #searchBox.hide {
     opacity: 0;
-    transform: translate(-50%, -50px);
+    transform: translate(0, -50px);
 }
 
 .inputTextField {
@@ -321,6 +321,9 @@ body, html {
     }
     .header .leftHeaderContent .logo #logo {
         font-size: 40px;
+    }
+    #searchBox.hide {
+        transform: translate(-50%, -50px);
     }
     #searchBox {
         position: fixed;
