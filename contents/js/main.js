@@ -29,6 +29,9 @@ var loadPage = {
         this.total_pages = total_pages;
         this.displayEmotes(paginatedItems);
     },
+    loadAbout: function() {
+        aboutStuff.init({content: this.content});
+    },
     displayEmotes: function(emotes){
         const htmlString = emotes.map((emotes) => {
                 return `<div id="${emotes.name}" class="emoteContainer" data-clipboard-text="${loadPage.url_prefix}${emotes.name}${emotes.type}">
@@ -88,23 +91,10 @@ var loadPage = {
     scrollEvent: function() {
         const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
         if(clientHeight + scrollTop >= scrollHeight - 5) {
-            if(loadPage.page_flag <= loadPage.total_pages) {
+            if(loadPage.page_flag <= loadPage.total_pages && document.getElementById("homeButton").classList.contains("active")) {
                 loadPage.paginator(loadPage.emotes, loadPage.page_flag);
             }
         }
-        var currentScrollPos = window.pageYOffset;
-        if (this.prevScrollpos > currentScrollPos || currentScrollPos == 0) {
-            document.getElementById("searchBox").classList.remove("headerHidden");
-            document.getElementById("headerContainer").classList.remove("hide");
-        } else {
-            document.getElementById("searchBox").classList.add("headerHidden");
-            document.getElementById("headerContainer").classList.add("hide");
-            if(document.getElementById("sidebarContainer").classList.contains("open")) {
-                document.getElementById("sidebarContainer").classList.remove("open");
-                loadPage.sidebarOpener.classList.toggle("open");
-            }
-        }
-        this.prevScrollpos = currentScrollPos;
     },
     openSidebar: function(e) {
         e.target.classList.toggle("open");
