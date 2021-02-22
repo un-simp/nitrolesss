@@ -31,6 +31,12 @@ var sidebarStuff = {
                     case "discordButton":
                         location.href = "https://discord.gg/2h88T99sPa";
                         break;
+                    case "iOSApp":
+                        location.href = "https://github.com/Nitroless/iOS/blob/uwu/NitrolessiOS/NitrolessiOS.ipa";
+                        break;
+                    case "macOSApp":
+                        location.href = "https://github.com/Nitroless/Mac/releases";
+                        break;
                 }
             }
         });
