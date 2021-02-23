@@ -21,7 +21,7 @@ var loadPage = {
     },
     paginator: function(items, page, per_page) {
         var page = page || 1,
-            per_page = per_page || 100,
+            per_page = per_page || 500,
             offset = (page - 1) * per_page,
             paginatedItems = items.slice(offset).slice(0, per_page),
             total_pages = Math.ceil(items.length / per_page);
