@@ -32,7 +32,7 @@ var sidebarStuff = {
                         location.href = "https://discord.gg/2h88T99sPa";
                         break;
                     case "iOSApp":
-                        location.href = "https://github.com/Nitroless/iOS/blob/uwu/NitrolessiOS/NitrolessiOS.ipa";
+                        location.href = "https://testflight.apple.com/join/6Fd1KOSA";
                         break;
                     case "macOSApp":
                         location.href = "https://github.com/Nitroless/Mac/releases";
