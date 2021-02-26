@@ -72,14 +72,14 @@ var aboutStuff = {
                 devID: "amy",
                 displayPicture: "contents/socialPictures/amy.jpg",
                 devName: "Amy",
-                devRole: "iOS App | iOS Keyboard | MacOS App",
+                devRole: "iOS App | iOS Keyboard | macOS App",
                 socialURL: "https://github.com/CharlieWhile13"
             }),
             alt = this.creditsMaker({
                 devID: "alt",
                 displayPicture: "contents/socialPictures/alt.jpg",
                 devName: "Althio",
-                devRole: "MacOS App",
+                devRole: "macOS App",
                 socialURL: "https://twitter.com/a1thio"
             }),
             superbro = this.creditsMaker({
@@ -100,7 +100,7 @@ var aboutStuff = {
                 devID: "quippr",
                 displayPicture: "contents/socialPictures/quippr.png",
                 devName: "Quiprr",
-                devRole: "VPS | Api | Bot",
+                devRole: "VPS | API | Bot",
                 socialURL: "https://twitter.com/quiprr"
             });
         domMaker.domAppender({
