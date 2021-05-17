@@ -1,6 +1,6 @@
 var loadPage = {
-    api_uri: 'https://api.quiprr.dev/',
-    url_prefix: "https://nitroless.quiprr.dev/",
+    api_uri: 'https://nitroless.monotrix.xyz/',
+    url_prefix: "https://nitroless.monotrix.xyz/emotes/",
     emotes: [],
     content: "",
     searchBar: "",
@@ -11,8 +11,10 @@ var loadPage = {
     prevScrollpos: window.pageYOffset,
     loadEmotes: async function(){
         try {
-            const res = await fetch(`${loadPage.api_uri}v1/nitroless/emotes`);
-            this.emotes = await res.json();
+            const res = await fetch(`${loadPage.api_uri}index.json`);
+            this.r = await res.json();
+            this.emotes = this.r.emotes;
+            console.log(this.emotes)
             this.emotes.sort(this.dynamicSorting("name"));
             this.paginator(this.emotes, 1);
         } catch(err) {
