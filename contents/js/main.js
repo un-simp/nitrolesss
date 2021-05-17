@@ -12,9 +12,10 @@ var loadPage = {
     loadEmotes: async function(){
         try {
             const res = await fetch(`${loadPage.api_uri}index.json`);
-            this.emotes = await res.json();
-            console.log(this.emotes);
-            this.emotes.emotes.sort(this.dynamicSorting("name"));
+            this.r = await res.json();
+            this.emotes = this.r.emotes;
+            console.log(this.emotes)
+            this.emotes.sort(this.dynamicSorting("name"));
             this.paginator(this.emotes, 1);
         } catch(err) {
             console.error(err);
