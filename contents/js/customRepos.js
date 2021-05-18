@@ -6,7 +6,10 @@ var customRepos = {
             const resp = await fetch(`${api_uri}index.json`);
             this.r = await resp.json();
             let sortedEmotes = this.r.emotes.sort(this.dynamicSorting("name"));
+            let repoId = this.r.name.split(" ").join("");
+            repoId = repoId.split("'").join("");
             this.repoEmotes.push({
+                "id": repoId,
                 "api_uri": api_uri,
                 "name": this.r.name,
                 "path": this.r.path,
@@ -22,27 +25,60 @@ var customRepos = {
             <div id="${emote.name}${emote.type}" class="emoteContainer" data-clipboard-text="${repo.api_uri}${repo.path}/${emote.name}${emote.type}">
                 <img src="${repo.api_uri}${repo.path}/${emote.name}${emote.type}" id="${emote.name}${emote.type}Img" class="emoteImage" name="${emote.name}" />
                 <div class="emoteCopied" style="display:none;">COPIED!</div>
-                <div id="${emote.name}Title" class="emoteTitle">${emote.name}</div>
             </div>
             `
         }).join('');
         const htmlContainer = domMaker.init({
             type: "div",
-            id: repo.name,
+            id: repo.id,
             className: "repoContainer",
             innerHTML: `
-            <div id="${repo.name}" class="repoName">
-                ${repo.name}
+            <div id="topPart">
+                <div class="repoIcon">
+                    <img src="${repo.api_uri}RepoImage.png" class="repoImage" />
+                </div>
+                <div class="repoHeader">
+                    <div class="headerLeftPart">
+                        <div class="headerTopPart">
+                            <div id="${repo.id}Name" class="repoName">
+                                ${repo.name}
+                                <div id="${repo.id}Chevron" class="mi mi-ChevronDown closed"></div>
+                            </div>
+                        </div>
+                        <div class="headerBottomPart">
+                            <div id="${repo.id}APIURI" class="repoURL">${repo.api_uri}</div>
+                        </div>
+                    </div>
+                    <div id="${repo.id}" class="headerRightPart">
+                        <div class="mi mi-Delete"></div>
+                        <div class="deleteText">Delete</div>
+                    </div>
+                </div>
             </div>
-            <div id="${repo.api_uri}" class="repoURL">
-                ${repo.api_uri}
-            </div>
-            <div id="${repo.name}Emotes" class="repoEmotes hide">
+            <div id="${repo.id}Emotes" class="repoEmotes hide">
                 ${htmlString}
             </div>
             `
         });
+        htmlContainer.addEventListener("click", (e) => {
+            if(e.target.className !== "emoteContainer" && e.target.className !== "emoteImage" && e.target.className !== "repoEmotes") {
+                document.getElementById(repo.id + "Chevron").classList.toggle("closed");
+                document.getElementById(repo.id + "Emotes").classList.toggle("hide");
+            }
+        });
         return htmlContainer;
+    },
+    copySuccess: function(e) {
+        let el = document.getElementById(e.trigger.id);
+        el.getElementsByClassName('emoteImage')[0].style.display = 'none';
+        el.getElementsByClassName('emoteCopied')[0].style.display = '';
+        setTimeout(() => {
+            el.getElementsByClassName('emoteImage')[0].style.display = '';
+            el.getElementsByClassName('emoteCopied')[0].style.display = 'none';
+        }, 2500);
+    },
+    copyFailure: function(e) {
+        alert('Couldn\'t copy ' + e.trigger.id);
     },
     dynamicSorting: function(property) {
         let sortOrder = 1;
@@ -59,12 +95,16 @@ var customRepos = {
         }
     },
     init: async function() {
-
+        loadPage.content.innerHTML = "";
+        this.repoEmotes = [];
         for(let i = 0; i < localstore.addedRepos.length; i++) {
             await customRepos.loadEmotes(localstore.addedRepos[i]);
         }
         for(let i = 0; i < customRepos.repoEmotes.length; i++) {
             loadPage.content.appendChild(customRepos.displayEmotes(customRepos.repoEmotes[i]));
         }
+        let clipboard = new ClipboardJS('.repoEmotes');
+        clipboard.on('success', this.copySuccess);
+        clipboard.on('error', this.copyFailure);
     }
 }

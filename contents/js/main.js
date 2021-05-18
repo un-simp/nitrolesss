@@ -108,7 +108,10 @@ var loadPage = {
         localstore.init({
             storageName: "NitrolessStorage",
             extraStorage: {
-                addedRepos: ["https://nitroless.github.io/ExampleNitrolessRepo/"]
+                addedRepos: [
+                    "https://nitroless.github.io/ExampleNitrolessRepo/",
+                    "https://thealphastream.github.io/emojis/"
+                ]
             }
         });
         this.content = params.content;
