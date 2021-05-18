@@ -33,6 +33,9 @@ var loadPage = {
     loadAbout: function() {
         aboutStuff.init({content: this.content});
     },
+    loadCustomRepos: function() {
+        customRepos.init();
+    },
     displayEmotes: function(emotes){
         const htmlString = emotes.map((emotes) => {
                 return `<div id="${emotes.name}${emotes.type}" class="emoteContainer" data-clipboard-text="${loadPage.url_prefix}${emotes.name}${emotes.type}">
