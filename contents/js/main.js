@@ -14,7 +14,6 @@ var loadPage = {
             const res = await fetch(`${loadPage.api_uri}index.json`);
             this.r = await res.json();
             this.emotes = this.r.emotes;
-            console.log(this.emotes)
             this.emotes.sort(this.dynamicSorting("name"));
             this.paginator(this.emotes, 1);
         } catch(err) {
@@ -34,9 +33,12 @@ var loadPage = {
     loadAbout: function() {
         aboutStuff.init({content: this.content});
     },
+    loadCustomRepos: function() {
+        customRepos.init();
+    },
     displayEmotes: function(emotes){
         const htmlString = emotes.map((emotes) => {
-                return `<div id="${emotes.name}" class="emoteContainer" data-clipboard-text="${loadPage.url_prefix}${emotes.name}${emotes.type}">
+                return `<div id="${emotes.name}${emotes.type}" class="emoteContainer" data-clipboard-text="${loadPage.url_prefix}${emotes.name}${emotes.type}">
                             <img src="${loadPage.url_prefix}${emotes.name}${emotes.type}" id="${emotes.name}Img" class="emoteImage" name="${emotes.name}" />
                             <div class="emoteCopied" style="display:none;">COPIED!</div>
                             <div id="${emotes.name}Title" class="emoteTitle">${emotes.name}</div>
@@ -103,6 +105,15 @@ var loadPage = {
         document.getElementById("sidebarContainer").classList.toggle("open");
     },
     init: function(params) {
+        localstore.init({
+            storageName: "NitrolessStorage",
+            extraStorage: {
+                addedRepos: [
+                    "https://nitroless.github.io/ExampleNitrolessRepo/",
+                    "https://thealphastream.github.io/emojis/"
+                ]
+            }
+        });
         this.content = params.content;
         this.searchBar = params.searchBar;
         this.sidebarOpener = params.sidebarOpener;
