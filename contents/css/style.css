@@ -353,6 +353,9 @@ body, html {
         padding-bottom: 20px;
         max-width: unset;
     }
+    .emoteContainer:hover {
+        transform: unset;
+    }
 }
 
 @keyframes fadeInOut {
