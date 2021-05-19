@@ -61,7 +61,7 @@ var customRepos = {
             `
         });
         htmlContainer.addEventListener("click", (e) => {
-            if(e.target.className !== "emoteContainer" && e.target.className !== "emoteImage" && e.target.className !== "repoEmotes") {
+            if(e.target.className !== "headerRightPart" && e.target.className !== "emoteContainer" && e.target.className !== "emoteImage" && e.target.className !== "repoEmotes") {
                 document.getElementById(repo.id + "Chevron").classList.toggle("closed");
                 document.getElementById(repo.id + "Emotes").classList.toggle("hide");
             }
@@ -102,6 +102,23 @@ var customRepos = {
         }
         for(let i = 0; i < customRepos.repoEmotes.length; i++) {
             loadPage.content.appendChild(customRepos.displayEmotes(customRepos.repoEmotes[i]));
+        }
+        let deleteButtons = document.getElementsByClassName("headerRightPart");
+        for(let i = 0; i < deleteButtons.length; i++) {
+            let deleteButton = deleteButtons[i];
+            deleteButton.addEventListener("click", (e) => {
+                let repoID = e.target.id;
+                let obj = customRepos.repoEmotes.filter((obj) => {
+                    return obj.id === repoID;
+                });
+                let r = confirm("Delete Repo: " + obj[0].name + "?");
+                if (r == true) {
+                    let uri = obj[0].api_uri;
+                    localstore.removeApp("addedRepos", uri);
+                    alert("Repo Deleted!");
+                    customRepos.init();
+                }
+            });
         }
         let clipboard = new ClipboardJS('.repoEmotes');
         clipboard.on('success', this.copySuccess);

@@ -73,11 +73,17 @@
             sidebarOpener: document.getElementById("hamburgerMenu")
         });
         sidebarStuff.init();
-        document.getElementById("addRepoButton").addEventListener("click", (e) => {
+        document.getElementById("addRepoButton").addEventListener("click", async function(e) {
             let addRepo = prompt("Please enter the Repo's URL:", "https://");
-            if(!addRepo || addRepo != "") {
-                localstore.addApp("addedRepos", addRepo);
-                customRepos.init();
+            if(addRepo != null && addRepo !== "") {
+                try {
+                    const response = await fetch(`${addRepo}index.json`);
+                    localstore.addApp("addedRepos", addRepo);
+                    alert("Repo Added!");
+                    customRepos.init();
+                } catch(err) {
+                    alert("Repo could not be added because \n\nError:\n" + err);
+                }
             }
         });
     </script>

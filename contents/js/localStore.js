@@ -1,29 +1,6 @@
 /* 
 Inspired by junesiphone's jstorage.js
 Script by Paras Khanchandani https://twitter.com/ParasKCD
-
-#Usage:-
-
-- Initialization:
-localstore.init({
-    storageName: //some name for storage
-});
-
-- Adding a Value:
-localstore.addValue('someValueName', 'value');
-
-- Removing a Value:
-localstore.removeValue('someValueName');
-
-- XenHTML specific
-    - Adding an app:
-    localstore.addApp('arrayName', 'app');
-
-    - Removing an app:
-    localstore.removeApp('arrayName', 'app');
-
-    - Replacing an app:
-    localstore.replaceApp('arrayName', 'oldApp', 'newApp');
 */
 
 var localstore = {
@@ -47,7 +24,7 @@ var localstore = {
     addApp: function(arrayName, app) {
         if(localstore[arrayName]) {
             if(localstore[arrayName].indexOf(app) > -1) {
-                alert('App already placed');
+                alert('Repo already added');
                 return;
             } else {
                 localstore[arrayName].push(app);
@@ -76,24 +53,6 @@ var localstore = {
         if(localstore[arrayName].length == 0) {
             localstore.removeValue(arrayName);
         }
-    },
-    changeAppOrder: function(arrayName, appA, appB) {
-        let indexA = this[arrayName].indexOf(appA);
-        let indexB = this[arrayName].indexOf(appB);
-        this[arrayName][indexA] = appB;
-        this[arrayName][indexB] = appA;
-        this.save();
-    },
-    addValue: function(name, value) {
-        localstore[name] = value;
-        localstore.storageData.push(name);
-        this.save();
-    },
-    removeValue: function(name) {
-        localstore[name] = null;
-        let index = this.storageData.indexOf(name);
-        this.storageData.splice(index, 1);
-        this.save();
     },
     resetStorage: function() {
         localStorage.removeItem(localstore.storageName);
