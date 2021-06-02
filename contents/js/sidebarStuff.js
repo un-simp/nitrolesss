@@ -77,6 +77,11 @@ var sidebarStuff = {
                         navBar.classList.add("hide");
                         location.href = "https://discord.gg/2h88T99sPa";
                         break;
+                    case "redditButton":
+                        searchbar.classList.add("hide");
+                        navBar.classList.add("hide");
+                        location.href = "https://reddit.com/r/nitroless";
+                        break;
                     case "iOSApp":
                         searchbar.classList.add("hide");
                         navBar.classList.add("hide");
