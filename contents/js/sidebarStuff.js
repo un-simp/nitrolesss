@@ -87,6 +87,13 @@ var sidebarStuff = {
                         navBar.classList.add("hide");
                         location.href = "https://github.com/Nitroless/Mac/releases";
                         break;
+
+                    case "electronApp":
+                        searchbar.classList.add("hide");
+                        navBar.classList.add("hide");
+                        location.href = "https://github.com/Nitroless/Electron/releases";
+                        break;
+
                 }
             }
         });
