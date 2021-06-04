@@ -65,7 +65,7 @@ var aboutStuff = {
                 devID: "paraskcd",
                 displayPicture: "contents/socialPictures/kcd.jpg",
                 devName: "Paras KCD",
-                devRole: "Website",
+                devRole: "Website | Windows App",
                 socialURL: "https://twitter.com/ParasKCD"
             }),
             amy = this.creditsMaker({
@@ -73,7 +73,7 @@ var aboutStuff = {
                 displayPicture: "contents/socialPictures/amy.jpg",
                 devName: "Amy",
                 devRole: "iOS App | iOS Keyboard | macOS App",
-                socialURL: "https://github.com/CharlieWhile13"
+                socialURL: "https://github.com/elihwyma"
             }),
             alt = this.creditsMaker({
                 devID: "alt",
@@ -93,7 +93,7 @@ var aboutStuff = {
                 devID: "bypass",
                 displayPicture: "contents/socialPictures/bypass.jpg",
                 devName: "Bypass",
-                devRole: "Website | Web App",
+                devRole: "Website",
                 socialURL: "https://twitter.com/imbypass"
             }),
             quippr = this.creditsMaker({
