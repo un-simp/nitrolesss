@@ -110,7 +110,8 @@ var loadPage = {
             extraStorage: {
                 addedRepos: [
                     "https://nitroless.github.io/ExampleNitrolessRepo/",
-                    "https://thealphastream.github.io/emojis/"
+                    "https://thealphastream.github.io/emojis/",
+                    "https://un-simp.github.io/nitroless"
                 ]
             }
         });
