@@ -55,6 +55,12 @@ var sidebarStuff = {
                         customRepos.repoEmotes = [];
                         loadPage.loadEmotes();
                         break;
+                    case "customReposButton":
+                        e.target.classList.add("active");
+                        searchbar.classList.add("hide");
+                        addRepoButton.classList.remove("hidden");
+                        loadPage.loadCustomRepos();
+                        break;
                     case "aboutButton":
                         e.target.classList.add("active");
                         searchbar.classList.add("hide");
